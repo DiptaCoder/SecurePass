@@ -2,34 +2,37 @@
 
 ## Sistem Manajemen Akun Digital Berbasis Terminal
 
-SecurePass adalah aplikasi berbasis Go (Golang) yang digunakan untuk mengelola data akun digital secara sederhana melalui terminal. Program ini memungkinkan pengguna menyimpan, mengubah, menghapus, mencari, mengurutkan, dan menganalisis data akun beserta informasi kekuatan kata sandinya.
+SecurePass adalah aplikasi berbasis bahasa pemrograman Go (Golang) yang digunakan untuk mengelola data akun digital melalui terminal. Program ini memungkinkan pengguna menyimpan, mengubah, menghapus, mencari, mengurutkan, dan menganalisis data akun secara sederhana dan terstruktur.
 
-Program ini dikembangkan sebagai Tugas Besar Mata Kuliah Algoritma dan Pemrograman.
+Aplikasi ini dikembangkan sebagai Tugas Besar Mata Kuliah Algoritma dan Pemrograman.
 
 ---
 
 # Daftar Isi
 
-- Deskripsi Program
-- Fitur Aplikasi
-- Struktur Data
-- Cara Menjalankan Program
-- Panduan Penggunaan
-- Fungsi Pendukung
-- Algoritma yang Digunakan
-- Struktur Repository
-- Contoh Penggunaan
-- Catatan Teknis
-- Teknologi
-- Anggota Tim
+- [Deskripsi Program](#deskripsi-program)
+- [Tujuan Program](#tujuan-program)
+- [Fitur Aplikasi](#fitur-aplikasi)
+- [Struktur Data](#struktur-data)
+- [Struktur Penyimpanan Data](#struktur-penyimpanan-data)
+- [Cara Menjalankan Program](#cara-menjalankan-program)
+- [Panduan Penggunaan](#panduan-penggunaan)
+- [Fungsi Pendukung](#fungsi-pendukung)
+- [Algoritma yang Digunakan](#algoritma-yang-digunakan)
+- [Struktur Repository](#struktur-repository)
+- [Contoh Penggunaan](#contoh-penggunaan)
+- [Catatan Teknis](#catatan-teknis)
+- [Teknologi](#teknologi)
+- [Anggota Tim](#anggota-tim)
+- [Dokumentasi](#dokumentasi)
 
 ---
 
 # Deskripsi Program
 
-SecurePass merupakan aplikasi manajemen akun digital yang digunakan untuk menyimpan berbagai data akun dalam satu sistem. Setiap akun memiliki informasi berupa nama layanan, email, kata sandi, tanggal pembaruan, dan ID unik.
+SecurePass merupakan aplikasi manajemen akun digital yang digunakan untuk menyimpan berbagai informasi akun dalam satu sistem. Setiap akun memiliki data berupa nama layanan, email, kata sandi, tanggal pembaruan, dan ID unik yang dibuat secara otomatis.
 
-Program menerapkan konsep-konsep dasar Algoritma dan Pemrograman seperti:
+Program menerapkan beberapa konsep dasar Algoritma dan Pemrograman, seperti:
 
 - Array
 - Struct
@@ -43,18 +46,32 @@ Program menerapkan konsep-konsep dasar Algoritma dan Pemrograman seperti:
 
 ---
 
+# Tujuan Program
+
+Program SecurePass dibuat untuk membantu pengguna mengelola data akun digital secara lebih terorganisir.
+
+Tujuan utama aplikasi ini adalah:
+
+- Menyimpan data akun digital dalam satu tempat.
+- Mempermudah pencarian akun berdasarkan nama layanan.
+- Mempermudah pengurutan data akun.
+- Menampilkan statistik data akun yang tersimpan.
+- Memberikan informasi mengenai kekuatan kata sandi yang digunakan.
+
+---
+
 # Fitur Aplikasi
 
 | No | Fitur | Deskripsi |
 |----|--------|-----------|
-| 1 | Tambah Akun | Menambahkan data akun baru ke dalam sistem |
+| 1 | Tambah Akun | Menambahkan data akun baru ke sistem |
 | 2 | Ubah Akun | Mengubah data akun berdasarkan ID |
 | 3 | Hapus Akun | Menghapus akun berdasarkan ID |
 | 4 | Tampilkan Semua Akun | Menampilkan seluruh akun yang tersimpan |
-| 5 | Pencarian Akun | Mencari akun berdasarkan nama layanan |
-| 6 | Pengurutan Data Akun | Mengurutkan data akun menggunakan algoritma sorting |
-| 7 | Statistik Data Akun | Menampilkan ringkasan statistik akun |
-| 8 | Keluar Aplikasi | Mengakhiri program |
+| 5 | Cari Akun | Mencari akun berdasarkan nama layanan |
+| 6 | Urutkan Data | Mengurutkan data akun menggunakan algoritma sorting |
+| 7 | Statistik | Menampilkan statistik akun yang tersimpan |
+| 8 | Keluar | Mengakhiri program |
 
 ---
 
@@ -72,9 +89,9 @@ type dataAkun struct {
 }
 ```
 
-Struct tersebut digunakan untuk menyimpan informasi satu akun.
+Struct tersebut digunakan untuk menyimpan data satu akun.
 
-Seluruh akun disimpan dalam array melalui struct:
+Data akun disimpan dalam array menggunakan struct:
 
 ```go
 type tabAkun struct {
@@ -82,7 +99,11 @@ type tabAkun struct {
 }
 ```
 
-Kapasitas maksimum penyimpanan:
+---
+
+# Struktur Penyimpanan Data
+
+Program menggunakan array statis sebagai media penyimpanan data akun.
 
 ```go
 const NMAX = 100
@@ -90,15 +111,19 @@ const NMAX = 100
 
 Artinya program dapat menyimpan maksimal 100 akun.
 
+Setiap data akun disimpan dalam array dan diakses menggunakan indeks array.
+
+Pendekatan ini dipilih karena sesuai dengan materi Array dan Struct pada mata kuliah Algoritma dan Pemrograman.
+
 ---
 
 # Cara Menjalankan Program
 
 ## Prasyarat
 
-Pastikan Go (Golang) telah terinstal pada komputer.
+Pastikan Go (Golang) telah terinstal pada perangkat.
 
-Untuk memeriksa versi Go:
+Cek versi Go dengan perintah:
 
 ```bash
 go version
@@ -136,7 +161,7 @@ Program akan menampilkan menu utama SecurePass.
 
 ## 1. Tambah Akun
 
-Fitur ini digunakan untuk menambahkan akun baru.
+Digunakan untuk menambahkan akun baru.
 
 Data yang dimasukkan:
 
@@ -153,7 +178,7 @@ Program akan membuat ID secara otomatis dan menyimpan data ke dalam array.
 
 Digunakan untuk mengubah data akun yang sudah tersimpan.
 
-Langkah:
+Langkah-langkah:
 
 1. Masukkan ID akun.
 2. Sistem mencari akun berdasarkan ID.
@@ -166,10 +191,10 @@ Langkah:
 
 Digunakan untuk menghapus akun berdasarkan ID.
 
-Langkah:
+Langkah-langkah:
 
 1. Masukkan ID akun.
-2. Sistem mencari akun.
+2. Sistem mencari akun berdasarkan ID.
 3. Jika ditemukan, data dihapus.
 4. Data setelahnya digeser satu posisi ke depan.
 
@@ -177,9 +202,9 @@ Langkah:
 
 ## 4. Tampilkan Semua Akun
 
-Menampilkan seluruh akun yang tersimpan beserta:
+Menampilkan seluruh akun yang tersimpan beserta informasi:
 
-- ID
+- ID akun
 - Nama layanan
 - Email
 - Kata sandi
@@ -188,54 +213,52 @@ Menampilkan seluruh akun yang tersimpan beserta:
 
 ---
 
-## 5. Pencarian Akun
+## 5. Cari Akun
 
 Pencarian dilakukan berdasarkan nama layanan.
 
-Metode yang tersedia:
+Tersedia dua metode:
 
 ### Sequential Search
 
-Menelusuri seluruh data satu per satu hingga data ditemukan.
+Melakukan pencarian dengan memeriksa setiap data satu per satu.
 
 ### Binary Search
 
-Mencari data dengan membagi area pencarian menjadi dua bagian secara berulang.
+Melakukan pencarian dengan membagi area pencarian menjadi dua bagian secara berulang.
 
-Catatan:
-
-Data harus sudah diurutkan berdasarkan nama layanan sebelum menggunakan Binary Search.
+**Catatan:** Data harus diurutkan berdasarkan nama layanan terlebih dahulu sebelum menggunakan Binary Search.
 
 ---
 
-## 6. Pengurutan Data Akun
+## 6. Urutkan Data
 
 Tersedia dua metode pengurutan:
 
 ### Selection Sort
 
-Mengurutkan data berdasarkan nama layanan dari A-Z.
+Mengurutkan data berdasarkan nama layanan dari A sampai Z.
 
 ### Insertion Sort
 
-Mengurutkan data berdasarkan ID akun.
+Mengurutkan data berdasarkan ID akun (urutan input).
 
 ---
 
-## 7. Statistik Data Akun
+## 7. Statistik
 
 Menampilkan informasi:
 
 - Total akun
-- Jumlah sandi kuat
-- Jumlah sandi sedang
-- Jumlah sandi lemah
+- Jumlah akun dengan sandi kuat
+- Jumlah akun dengan sandi sedang
+- Jumlah akun dengan sandi lemah
 - Sandi terpanjang
 - Sandi terpendek
 
 ---
 
-## 8. Keluar Aplikasi
+## 8. Keluar
 
 Mengakhiri penggunaan aplikasi dan menutup program.
 
@@ -243,17 +266,20 @@ Mengakhiri penggunaan aplikasi dan menutup program.
 
 # Fungsi Pendukung
 
-## Analisis Kekuatan Kata Sandi
+Selain fitur utama, program menggunakan beberapa fungsi pendukung.
 
-Program menggunakan fungsi:
+| Fungsi | Kegunaan |
+|----------|----------|
+| `kekuatanSandi()` | Menentukan kategori kekuatan kata sandi |
+| `samaStr()` | Membandingkan dua string tanpa membedakan huruf besar dan kecil |
+| `lebihKecil()` | Membandingkan urutan alfabet dua string |
+| `cariID()` | Mencari posisi akun berdasarkan ID |
 
-```go
-kekuatanSandi()
-```
+### Kategori Kekuatan Kata Sandi
 
-untuk mengelompokkan kata sandi menjadi:
+Fungsi `kekuatanSandi()` mengelompokkan kata sandi menjadi:
 
-### Lemah
+#### Lemah
 
 Memiliki satu jenis karakter.
 
@@ -263,7 +289,7 @@ Contoh:
 abcdef
 ```
 
-### Sedang
+#### Sedang
 
 Memiliki dua jenis karakter.
 
@@ -273,7 +299,7 @@ Contoh:
 abc123
 ```
 
-### Kuat
+#### Kuat
 
 Memiliki tiga atau lebih jenis karakter.
 
@@ -286,8 +312,8 @@ Abc123!
 Fungsi ini digunakan pada fitur:
 
 - Tampilkan Semua Akun
-- Pencarian Akun
-- Statistik Data Akun
+- Cari Akun
+- Statistik
 
 ---
 
@@ -295,43 +321,31 @@ Fungsi ini digunakan pada fitur:
 
 ## Sequential Search
 
-Digunakan pada:
+Digunakan pada fungsi:
 
 ```go
 cariSeq()
 ```
 
-Fungsi mencari data akun dengan memeriksa setiap elemen array satu per satu.
-
-Kompleksitas waktu:
-
-```text
-O(n)
-```
+Mencari data dengan memeriksa seluruh elemen array secara berurutan.
 
 ---
 
 ## Binary Search
 
-Digunakan pada:
+Digunakan pada fungsi:
 
 ```go
 cariBiner()
 ```
 
-Fungsi mencari data akun dengan membagi area pencarian menjadi dua bagian secara berulang.
-
-Kompleksitas waktu:
-
-```text
-O(log n)
-```
+Mencari data pada array yang telah terurut dengan membagi area pencarian menjadi dua bagian secara berulang.
 
 ---
 
 ## Selection Sort
 
-Digunakan pada:
+Digunakan pada fungsi:
 
 ```go
 selectionSort()
@@ -339,29 +353,17 @@ selectionSort()
 
 Mengurutkan data berdasarkan nama layanan secara alfabetis.
 
-Kompleksitas waktu:
-
-```text
-O(n²)
-```
-
 ---
 
 ## Insertion Sort
 
-Digunakan pada:
+Digunakan pada fungsi:
 
 ```go
 insertionSort()
 ```
 
 Mengurutkan data berdasarkan ID akun.
-
-Kompleksitas waktu:
-
-```text
-O(n²)
-```
 
 ---
 
@@ -380,7 +382,7 @@ SecurePass
 Keterangan:
 
 - README.md → Dokumentasi repository
-- main.go → Source code utama aplikasi
+- main.go → Source code program
 - Pseudocode.md → Pseudocode seluruh fitur
 - Flowchart.pdf → Flowchart aplikasi
 - Laporan_Tubes.pdf → Laporan tugas besar
@@ -389,7 +391,7 @@ Keterangan:
 
 # Contoh Penggunaan
 
-### Menambah Akun
+### Menambahkan Akun
 
 ```text
 Nama layanan : Gmail
@@ -401,8 +403,8 @@ Tgl update   : 01-06-2026
 ### Menampilkan Data
 
 ```text
-ID  Layanan  Email  Sandi  Kuat  Tgl Update
-1   Gmail    user@gmail.com  Abc123!  K  01-06-2026
+ID  Layanan              Email
+1   Gmail                user@gmail.com
 ```
 
 ### Menampilkan Statistik
@@ -418,11 +420,11 @@ Lemah           : 0
 
 # Catatan Teknis
 
-- Data disimpan di memori selama program berjalan.
-- Data akan hilang ketika program ditutup.
+- Data disimpan dalam memori selama program berjalan.
+- Data akan hilang setelah program ditutup.
 - Kapasitas maksimum penyimpanan adalah 100 akun.
 - Binary Search memerlukan data yang sudah terurut.
-- Input menggunakan `fmt.Scan`, sehingga tidak mendukung spasi dalam satu field.
+- Program menggunakan `fmt.Scan()`, sehingga input tidak mendukung spasi dalam satu field.
 
 ---
 
@@ -431,6 +433,7 @@ Lemah           : 0
 - Bahasa Pemrograman : Go (Golang)
 - Package yang digunakan : fmt
 - Tipe Aplikasi : Console Application
+- Platform : Windows, Linux, dan macOS
 
 ---
 
@@ -446,4 +449,16 @@ Farrel Ivander Budi Setiawan
 
 ---
 
-Dibuat sebagai Tugas Besar Algoritma dan Pemrograman.
+# Dokumentasi
+
+Repository ini berisi:
+
+- Source code program (`main.go`)
+- Dokumentasi pseudocode (`Pseudocode.md`)
+- Flowchart aplikasi (`Flowchart.pdf`)
+- Laporan tugas besar (`Laporan_Tubes.pdf`)
+- Dokumentasi repository (`README.md`)
+
+---
+
+**Dibuat sebagai Tugas Besar Mata Kuliah Algoritma dan Pemrograman.**
